@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+protoc \
+	fileformat.proto \
+	--go_out=. \
+	--go-vtproto_out=. \
+	--go-vtproto_opt=features=size+marshal+unmarshal
+
+protoc \
+	osmformat.proto \
+	--go_out=. \
+	--go-vtproto_out=. \
+	--go-vtproto_opt=features=size+marshal+unmarshal+clone+pool \
+	--go-vtproto_opt=pool=./pbfproto.PrimitiveBlock \
+	--go-vtproto_opt=pool=./pbfproto.StringTable \
+	--go-vtproto_opt=pool=./pbfproto.PrimitiveGroup \
+	--go-vtproto_opt=pool=./pbfproto.Node \
+	--go-vtproto_opt=pool=./pbfproto.DenseNodes \
+	--go-vtproto_opt=pool=./pbfproto.Way \
+	--go-vtproto_opt=pool=./pbfproto.Relation \
+	--go-vtproto_opt=pool=./pbfproto.ChangeSet \
+	--go-vtproto_opt=pool=./pbfproto.Info \
+	--go-vtproto_opt=pool=./pbfproto.DenseInfo
