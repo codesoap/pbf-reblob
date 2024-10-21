@@ -26,7 +26,7 @@ type undecodedBlob struct {
 }
 
 type DecodedBlob struct {
-	Err        error // Any error that might have occured when reading the blob.
+	Err        error // Any error that might have occurred when reading the blob.
 	BlobHeader *pbfproto.BlobHeader
 
 	// Either HeaderBlock or PrimitiveGroup will be nil.
